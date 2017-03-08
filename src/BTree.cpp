@@ -1,5 +1,5 @@
 #include "BTree.h"
-
+#include <iostream>
 BTree::BTree(){
     root = NULL;
 }
@@ -20,8 +20,8 @@ void BTree::deleteTree(){
 *   this method recursively deletes all the nodes in the tree starting with the leaf nodes
 *   @param _leaf the node to delete
 */
-void BTree::deleteTree(Node _leaf){
-    if (leaf != null){
+void BTree::deleteTree(Node* _leaf){
+    if (_leaf != NULL){
         deleteTree(_leaf->left);
         deleteTree(_leaf->right);
         delete _leaf;
@@ -72,18 +72,20 @@ void BTree::insert(int _value, Node* _node){
 *   This method calls a method that traverses the tree in pre-order
 *   @return string containing the nodes of the tree in pre-order
 */
-string BTree::printTreePre(){
-    string result = "";
-    return printTreePre(root);
+std::string BTree::printTreePre(){
+    std::string result = "";
+    return printTreePre(root, result);
 }
 
 /**
 *   This method traverses the tree in pre-order and returns the values as a string
 *   @return string containing the nodes of the tree in pre-order
 */
-string BTree::printTreePre(Node* _root, string _result){
+std::string BTree::printTreePre(Node* _root, std::string &_result){
     if (_root != NULL){
         _result += _root->value + " ";
+        std::cout << _root->value;
+        std::cout << " ";
         printTreePre(_root->left, _result);
         printTreePre(_root->right, _result);
     }
@@ -96,8 +98,8 @@ string BTree::printTreePre(Node* _root, string _result){
 *   This method calls a method that traverses the tree in post-order
 *   @return string containing the nodes of the tree in post-order
 */
-string BTree::printTreePost(){
-    string result = "";
+std::string BTree::printTreePost(){
+    std::string result = "";
     return printTreePost(root, result);
 }
 
@@ -105,21 +107,25 @@ string BTree::printTreePost(){
 *   This method traverses the tree in post-order and returns the values as a string
 *   @return string containing the nodes of the tree in post-order
 */
-string BTree::printTreePost(Node* _root, string _result){
+std::string BTree::printTreePost(Node* _root, std::string &_result){
     if (_root != NULL){
         printTreePost(_root->left, _result);
         printTreePost(_root->right, _result);
-        _result += _root->value + " ";
+        std::cout << _root->value;
+        std::cout << " ";
+        _result += _root->value;
     }
     return _result;
 }
+
+
 
 /**
 *   This method calls a method that traverses the tree in in-order
 *   @return string containing the nodes of the tree in in-order
 */
-string BTree::printTreeIn(){
-    string result = "";
+std::string BTree::printTreeIn(){
+    std::string result = "";
     return printTreeIn(root, result);
 }
 
@@ -127,17 +133,22 @@ string BTree::printTreeIn(){
 *   This method traverses the tree in in-order and returns the values as a string
 *   @return string containing the nodes of the tree in in-order
 */
-string BTree::printTreeIn(Node* _root, string _result){
+std::string BTree::printTreeIn(Node* _root, std::string &_result){
     if (_root != NULL){
         printTreeIn(_root->left, _result);
         _result += _root->value + " ";
+        std::cout << _root->value;
+        std::cout << " ";
         printTreeIn(_root->right, _result);
 
     }
     return _result;
 }
 
-
+/**
+*   This method traverses the right branch of the tree by calling a recursing max method
+*   @return the maximum value in the tree
+*/
 int BTree::max(){
     if (root != NULL){
         if (root->right != NULL){
@@ -150,6 +161,10 @@ int BTree::max(){
     }
 }
 
+/**
+*   This method traverses the right branch of the tree by recursing
+*   @return the maximum value in the tree
+*/
 int BTree::max(Node* _root){
     if (_root->right != NULL){
         max(_root->right);
@@ -158,6 +173,11 @@ int BTree::max(Node* _root){
     }
 }
 
+
+/**
+*   This method traverses the left branch of the tree by calling a recursing min method
+*   @return the minimum value in the tree
+*/
 int BTree::min(){
     if (root != NULL){
         if (root->left != NULL){
@@ -171,19 +191,24 @@ int BTree::min(){
     }
 }
 
+/**
+*   This method traverses the left branch of the tree by recursing
+*   @return the minimum value in the tree
+*/
 int BTree::min(Node* _root){
     if (_root->left != NULL){
         min(_root->left);
     } else {
-        return _root->left;
+        return _root->value;
     }
 }
 
 
-int BTree::height();
-int BTree::numNodes();
-int BTree::numLeafs();
-
+int BTree::height(){};
+int BTree::numNodes(){};
+int BTree::countNodes(Node* _root){};
+int BTree::numLeafs(){};
+int BTree::countLeafs(Node* _root){};
 
 
 

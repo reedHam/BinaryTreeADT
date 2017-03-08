@@ -10,9 +10,9 @@ class BTree{
 
         void deleteTree();
         void insert(int _value);
-        string printTreePre();
-        string printTreePost();
-        string PrintTreeIn();
+        std::string printTreePre();
+        std::string printTreePost();
+        std::string printTreeIn();
 
         int max();
         int min();
@@ -26,8 +26,8 @@ class BTree{
         */
         struct Node {
             int value;
-            node* left;
-            node* right;
+            Node* left;
+            Node* right;
             bool visited;
 
             // constructor sets value to 0 if no parameter is given
@@ -43,9 +43,9 @@ class BTree{
 
         void deleteTree(Node* _leaf);
         void insert(int _value, Node* _node);
-        string printTreePre(Node _root, string _result);
-        string printTreePost(Node _root, string _result);
-        string PrintTreeIn(Node _root, string _result);
+        std::string printTreePre(Node* _root, std::string &_result);
+        std::string printTreePost(Node* _root, std::string &_result);
+        std::string printTreeIn(Node* _root, std::string &_result);
 
         int max(Node* _root);
         int min(Node* _root);
