@@ -2,16 +2,16 @@
 #define BTREE_H
 
 /**
-*   Node: Contains a value and two children.
+*   Node: Contains a value and two children (left child and right child).
 */
-struct node {
+struct Node {
     int value;
     node* left;
     node* right;
 
-    // constructor
-    node(){
-        value = -1; // Set to -1 for the calculation of tree height.
+    // constructor sets value to 0 if no parameter is given
+    Node(int _value) : value(0){
+        value = _value;
         left = NULL;
         right = NULL;
     }
@@ -19,14 +19,30 @@ struct node {
 
 class BTree{
     public:
-        /** Default constructor */
         BTree();
-        /** Default destructor */
         ~BTree();
 
-    protected:
+        void insert(int _value);
+        void deleteTree();
+
+        Node* search(int _value);
+
+        int find(node* _node);
+        int height();
+        int numNodes();
+        int numLeafs();
 
     private:
+        Node* root;
+
+        void deleteNode(Node* _leaf);
+        void insert(Node* _node);
+
+        Node* search(int _value, Node* node);
+
+        int find(node* _node);
+        int countNodes(Node* root);
+        int countLeafs(Node* root);
 };
 
 #endif // BTREE_H
