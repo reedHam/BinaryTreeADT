@@ -1,48 +1,56 @@
 #ifndef BTREE_H
 #define BTREE_H
 
-/**
-*   Node: Contains a value and two children (left child and right child).
-*/
-struct Node {
-    int value;
-    node* left;
-    node* right;
-
-    // constructor sets value to 0 if no parameter is given
-    Node(int _value) : value(0){
-        value = _value;
-        left = NULL;
-        right = NULL;
-    }
-};
+#include <string>
 
 class BTree{
     public:
         BTree();
         ~BTree();
 
-        void insert(int _value);
         void deleteTree();
+        void insert(int _value);
+        string printTreePre();
+        string printTreePost();
+        string PrintTreeIn();
 
-        Node* search(int _value);
-
-        int find(node* _node);
+        int max();
+        int min();
         int height();
         int numNodes();
         int numLeafs();
 
     private:
+        /**
+        *   Node: Contains a value and two children (left child and right child).
+        */
+        struct Node {
+            int value;
+            node* left;
+            node* right;
+            bool visited;
+
+            // constructor sets value to 0 if no parameter is given
+            Node(int _value) : value(0){
+                value = _value;
+                left = NULL;
+                right = NULL;
+                visited = false;
+            }
+        };
+
         Node* root;
 
-        void deleteNode(Node* _leaf);
-        void insert(Node* _node);
+        void deleteTree(Node* _leaf);
+        void insert(int _value, Node* _node);
+        string printTreePre(Node _root, string _result);
+        string printTreePost(Node _root, string _result);
+        string PrintTreeIn(Node _root, string _result);
 
-        Node* search(int _value, Node* node);
-
-        int find(node* _node);
-        int countNodes(Node* root);
-        int countLeafs(Node* root);
+        int max(Node* _root);
+        int min(Node* _root);
+        int countNodes(Node* _root);
+        int countLeafs(Node* _root);
 };
 
 #endif // BTREE_H
