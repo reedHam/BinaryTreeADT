@@ -13,23 +13,29 @@ int main(){
     testTree.insert(11);
     testTree.insert(13);
 
+    cout << "Pre-order: ";
     testTree.printTreePre();
     cout << endl;
 
+    cout << "Post-order: ";
     testTree.printTreePost();
     cout << endl;
 
+    cout << "In-order: ";
     testTree.printTreeIn();
     cout << endl;
 
+    cout << "Max: ";
     cout << testTree.max() << endl;
 
+    cout << "Min: ";
     cout << testTree.min() << endl;
 
+    cout << "Number of nodes: ";
     cout << testTree.numNodes() << endl;
 
+    cout << "Number of Leafs: ";
     cout << testTree.numLeafs() << endl;
-
 
     return 0;
 }
