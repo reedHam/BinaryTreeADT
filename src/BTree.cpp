@@ -70,79 +70,64 @@ void BTree::insert(int _value, Node* _node){
 
 /**
 *   This method calls a method that traverses the tree in pre-order
-*   @return string containing the nodes of the tree in pre-order
 */
-std::string BTree::printTreePre(){
-    std::string result = "";
-    return printTreePre(root, result);
+void BTree::printTreePre(){
+    return printTreePre(root);
 }
 
 /**
-*   This method traverses the tree in pre-order and returns the values as a string
-*   @return string containing the nodes of the tree in pre-order
+*   This method traverses the tree in pre-order and prints the value
 */
-std::string BTree::printTreePre(Node* _root, std::string &_result){
+void BTree::printTreePre(Node* _root){
     if (_root != NULL){
-        _result += _root->value + " ";
         std::cout << _root->value;
         std::cout << " ";
-        printTreePre(_root->left, _result);
-        printTreePre(_root->right, _result);
+        printTreePre(_root->left);
+        printTreePre(_root->right);
     }
-    return _result;
 }
 
 
 
 /**
 *   This method calls a method that traverses the tree in post-order
-*   @return string containing the nodes of the tree in post-order
 */
-std::string BTree::printTreePost(){
-    std::string result = "";
-    return printTreePost(root, result);
+void BTree::printTreePost(){
+    return printTreePost(root);
 }
 
 /**
-*   This method traverses the tree in post-order and returns the values as a string
-*   @return string containing the nodes of the tree in post-order
+*   This method traverses the tree in post-order and prints the value
 */
-std::string BTree::printTreePost(Node* _root, std::string &_result){
+void BTree::printTreePost(Node* _root){
     if (_root != NULL){
-        printTreePost(_root->left, _result);
-        printTreePost(_root->right, _result);
+        printTreePost(_root->left);
+        printTreePost(_root->right);
         std::cout << _root->value;
         std::cout << " ";
-        _result += _root->value;
     }
-    return _result;
 }
 
 
 
 /**
 *   This method calls a method that traverses the tree in in-order
-*   @return string containing the nodes of the tree in in-order
 */
-std::string BTree::printTreeIn(){
-    std::string result = "";
-    return printTreeIn(root, result);
+void BTree::printTreeIn(){
+    return printTreeIn(root);
 }
 
 /**
-*   This method traverses the tree in in-order and returns the values as a string
-*   @return string containing the nodes of the tree in in-order
+*   This method traverses the tree in in-order and prints the value
 */
-std::string BTree::printTreeIn(Node* _root, std::string &_result){
+void BTree::printTreeIn(Node* _root){
     if (_root != NULL){
-        printTreeIn(_root->left, _result);
-        _result += _root->value + " ";
+        printTreeIn(_root->left);
         std::cout << _root->value;
         std::cout << " ";
-        printTreeIn(_root->right, _result);
+        printTreeIn(_root->right);
 
     }
-    return _result;
 }
 
 /**

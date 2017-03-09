@@ -10,9 +10,9 @@ class BTree{
 
         void deleteTree();
         void insert(int _value);
-        std::string printTreePre();
-        std::string printTreePost();
-        std::string printTreeIn();
+        void printTreePre();
+        void printTreePost();
+        void printTreeIn();
 
         int max();
         int min();
@@ -43,9 +43,9 @@ class BTree{
 
         void deleteTree(Node* _leaf);
         void insert(int _value, Node* _node);
-        std::string printTreePre(Node* _root, std::string &_result);
-        std::string printTreePost(Node* _root, std::string &_result);
-        std::string printTreeIn(Node* _root, std::string &_result);
+        void printTreePre(Node* _root);
+        void printTreePost(Node* _root);
+        void printTreeIn(Node* _root);
 
         int max(Node* _root);
         int min(Node* _root);
