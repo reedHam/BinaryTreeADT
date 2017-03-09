@@ -15,9 +15,21 @@ int main(){
 
     testTree.printTreePre();
     cout << endl;
+
     testTree.printTreePost();
     cout << endl;
+
     testTree.printTreeIn();
     cout << endl;
+
+    cout << testTree.max() << endl;
+
+    cout << testTree.min() << endl;
+
+    cout << testTree.numNodes() << endl;
+
+    cout << testTree.numLeafs() << endl;
+
+
     return 0;
 }

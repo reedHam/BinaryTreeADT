@@ -66,8 +66,6 @@ void BTree::insert(int _value, Node* _node){
     }
 }
 
-
-
 /**
 *   This method calls a method that traverses the tree in pre-order
 */
@@ -87,8 +85,6 @@ void BTree::printTreePre(Node* _root){
     }
 }
 
-
-
 /**
 *   This method calls a method that traverses the tree in post-order
 */
@@ -107,8 +103,6 @@ void BTree::printTreePost(Node* _root){
         std::cout << " ";
     }
 }
-
-
 
 /**
 *   This method calls a method that traverses the tree in in-order
@@ -158,7 +152,6 @@ int BTree::max(Node* _root){
     }
 }
 
-
 /**
 *   This method traverses the left branch of the tree by calling a recursing min method
 *   @return the minimum value in the tree
@@ -190,10 +183,52 @@ int BTree::min(Node* _root){
 
 
 int BTree::height(){};
-int BTree::numNodes(){};
-int BTree::countNodes(Node* _root){};
-int BTree::numLeafs(){};
-int BTree::countLeafs(Node* _root){};
+
+/**
+*   This method calls countNode
+*   @return the number of nodes in the tree
+*/
+int BTree::numNodes(){
+    return countNodes(root);
+};
+
+/**
+*   This traverses the tree and adds 1 for every node
+*   @param node to traverse from
+*   @return the number of nodes in the tree
+*/
+int BTree::countNodes(Node* _root){
+    if (_root != NULL){
+        return 1 + countNodes(_root->left) + countNodes(_root->right);
+    } else {
+        return 0;
+    }
+};
+
+/**
+*   This method calls countLeaf
+*   @return the number of nodes in the tree
+*/
+int BTree::numLeafs(){
+    return countLeafs(root);
+};
+
+/**
+*   This traverses the tree and adds 1 for every leaf node
+*   @param node to traverse from
+*   @return the number of leaf nodes in the tree
+*/
+int BTree::countLeafs(Node* _root){
+    if (_root != NULL){
+        if (_root->left == NULL && _root->right == NULL){
+            return 1;
+        }
+
+        return countLeafs(_root->left) + countLeafs(_root->right);
+    } else {
+        return 0;
+    }
+};
 
 
 
